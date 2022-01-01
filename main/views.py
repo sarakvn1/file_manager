@@ -7,7 +7,7 @@ from rest_framework.response import Response
 # Create your views here.
 from rest_framework.exceptions import ValidationError
 from main.models import User
-
+from main.forms import FileForm
 
 class SignUpView(APIView):
 
@@ -48,5 +48,8 @@ class LogInView(APIView):
 
 
 class ConverterView(APIView):
-    def post(self):
-        pass
+    def post(self,request):
+        request = request
+        form = FileForm(request.POST,request.FILES)
+        print(request)
+
